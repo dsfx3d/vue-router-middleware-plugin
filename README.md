@@ -23,7 +23,7 @@ yarn add vue-router-middleware-plugin
 
 Register the plugin in your application.
 
-```ECMA6
+```javascript
 import Vue from 'vue'
 import MiddlewarePlugin from 'vue-router-middleware-plugin'
 /* vue-router is required */
@@ -34,7 +34,7 @@ Vue.use(MiddlewarePlugin, router)
 
 Create a middleware, `auth-example.js`
 
-```ECMA6
+```javascript
 import store from '~/store'
 
 export default ({ to, from, next }) => {
@@ -48,7 +48,7 @@ export default ({ to, from, next }) => {
 
 Attach the middleware to the routes in `router.js`
 
-```ECMA6
+```javascript
 import AuthExampleMiddleware from './middlewares/auth-example'
 import AnotherMiddleware from './middlewares/another'
 
