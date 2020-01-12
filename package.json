@@ -16,8 +16,6 @@
     "test": "jest --coverage",
     "semantic-release": "semantic-release"
   },
-  "author": "Yashodhan Singh <dsfx3d@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "7.7.7",
     "@babel/core": "7.7.7",
@@ -45,5 +43,18 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dsfx3d/vue-router-middleware-plugin.git"
-  }
+  },
+  "author": "Yashodhan Singh <dsfx3d@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue-router",
+    "middleware",
+    "middleware-pipeline",
+    "plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/dsfx3d/vue-router-middleware-plugin/issues"
+  },
+  "homepage": "https://github.com/dsfx3d/vue-router-middleware-plugin"
 }
