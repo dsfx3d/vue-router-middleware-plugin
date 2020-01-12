@@ -1,0 +1,41 @@
+{
+  "name": "vue-router-middleware-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "type-check": "tslint-config-prettier-check ./tslint.json",
+    "type-check:watch": "tsc --noEmit --watch",
+    "build": "npm run test && npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir build --extensions \".ts,.tsx\" --source-maps inline",
+    "test": "jest --coverage"
+  },
+  "author": "Yashodhan Singh <dsfx3d@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "7.7.7",
+    "@babel/core": "7.7.7",
+    "@babel/plugin-proposal-class-properties": "7.7.4",
+    "@babel/plugin-proposal-numeric-separator": "7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "7.7.7",
+    "@babel/preset-env": "7.7.7",
+    "@babel/preset-typescript": "7.7.7",
+    "@types/jest": "24.0.25",
+    "@types/node": "13.1.6",
+    "babel-loader": "8.0.4",
+    "jest": "24.9.0",
+    "prettier": "1.19.1",
+    "ts-jest": "24.3.0",
+    "tslint": "5.20.1",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.1.0",
+    "typescript": "3.7.4",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10"
+  }
+}
