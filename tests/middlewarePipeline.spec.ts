@@ -12,7 +12,7 @@ const executePipeline = (
   } as RouteContext
   const func = middlewarePipeline(context, middlwware) as RouteResolver
   func()
-};
+}
 
 describe('Middleware Pipeline: Single Middleware', () => {
   it('executes middleware', () => {
