@@ -1,6 +1,6 @@
 {
   "name": "vue-router-middleware-plugin",
-  "version": "0.1.0-beta.1",
+  "version": "0.0.0-development",
   "description": "A vue.js plugin to implement a middleware pipeline between your routes.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -14,7 +14,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir build --extensions \".ts,.tsx\" --source-maps inline",
     "test": "jest --coverage",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "commit": "git-cz"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "ghooks": "2.0.4",
     "jest": "24.9.0",
     "prettier": "1.19.1",
-    "semantic-release": "16.0.1",
+    "semantic-release": "^16.0.1",
     "ts-jest": "24.3.0",
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
