@@ -10,11 +10,12 @@
   "scripts": {
     "type-check": "tslint-config-prettier-check ./tslint.json",
     "type-check:watch": "tsc --noEmit --watch",
-    "build": "npm run test && npm run build:types && npm run build:js",
+    "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir build --extensions \".ts,.tsx\" --source-maps inline",
     "test": "jest --coverage",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@babel/cli": "7.7.7",
@@ -29,9 +30,10 @@
     "babel-loader": "8.0.4",
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
+    "ghooks": "2.0.4",
     "jest": "24.9.0",
     "prettier": "1.19.1",
-    "semantic-release": "^16.0.1",
+    "semantic-release": "16.0.1",
     "ts-jest": "24.3.0",
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
@@ -56,5 +58,13 @@
   "bugs": {
     "url": "https://github.com/dsfx3d/vue-router-middleware-plugin/issues"
   },
-  "homepage": "https://github.com/dsfx3d/vue-router-middleware-plugin"
+  "homepage": "https://github.com/dsfx3d/vue-router-middleware-plugin",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "tsc --noEmit && npm run type-check && npm run test"
+    }
+  }
 }

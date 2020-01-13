@@ -1,5 +1,7 @@
 # vue-router-middleware-plugin
 
+[![npm version](https://badge.fury.io/js/vue-router-middleware-plugin.svg)](https://badge.fury.io/js/vue-router-middleware-plugin)
+
 A vue.js plugin to implement a middleware pipeline between your routes.
 
 It can be used to guard protected routes or to request an API to populate the store before a route is loaded.
