@@ -1,5 +1,5 @@
 import { UnknownError } from '../src/lib/Exceptions/UnknownError'
-import { expectErrorClass } from '../utils/testUtils'
+import { expectErrorClass } from '../src/utils/testUtils'
 
 describe('test utils', () => {
   it('throws Exception if expected error not thrown', () => {

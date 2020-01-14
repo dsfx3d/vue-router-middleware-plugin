@@ -1,4 +1,4 @@
-import { UnknownError } from "../src/lib/Exceptions/UnknownError"
+import { UnknownError } from '../lib/Exceptions/UnknownError'
 
 export const expectErrorClass = (fn: () => void, ErrorClass: unknown) => {
   try {
