@@ -73,7 +73,7 @@ const routes = [
   {
     path: '/profile',
     component: ProfileView,
-    /* You can also attach a multiple middlewares to a route */
+    /* You can also attach multiple middlewares to a route */
     meta: {
       middleware: [AuthExampleMiddleware, AnotherMiddleware]
     }
@@ -82,9 +82,7 @@ const routes = [
 
 ```
 
-**Note:** In the above example,
-
-If the user tries to access `/profile` route, the attached middlewares will be resolved synchronously in order. i.e. `AuthExampleMiddleware` will be resolved first and `AnotherMiddleware` afterward.
+If the user tries to access `/profile` route, the attached middlewares will be resolved in a synchronous order. i.e. `AuthExampleMiddleware` will be resolved first and `AnotherMiddleware` afterwards.
 
 ## Contributing
 
