@@ -5,7 +5,7 @@ import { OptionsMissingPluginError } from '../src/lib/Exceptions/OptionsMissingP
 // types
 import { Vue } from '../src/types/VueTypes'
 // test utils
-import { expectErrorClass } from '../utils/testUtils'
+import { expectErrorClass } from '../src/utils/testUtils'
 
 describe('installation checks', () => {
   const dummyVue: Vue = {}
