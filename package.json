@@ -17,7 +17,7 @@
     "semantic-release": "semantic-release",
     "lint": "prettier --check src/**/*.ts",
     "lint:fix": "tslint --fix --project ./",
-    "precommit": "npm run lint",
+    "precommit": "npm run lint && tsc --noEmit && npm run type-check && npm run test",
     "commit": "git-cz"
   },
   "devDependencies": {
@@ -32,7 +32,6 @@
     "@types/node": "13.1.6",
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "ghooks": "2.0.4",
     "jest": "24.9.0",
     "prettier": "1.19.1",
     "semantic-release": "^16.0.1",
@@ -62,9 +61,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "pre-commit": "tsc --noEmit && npm run type-check && npm run test"
     }
   }
 }
