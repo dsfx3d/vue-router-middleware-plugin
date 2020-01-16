@@ -9,6 +9,7 @@
   "rules": {
     "prettier": true,
     "interface-name": [true, "never-prefix"],
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "variable-name": false
   }
 }
