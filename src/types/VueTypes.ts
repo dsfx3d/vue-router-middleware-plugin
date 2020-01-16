@@ -11,6 +11,7 @@ export interface Vue {
 // router types
 export type RouteHook = (to: Route, from: Route, next: RouteResolver) => void
 export interface Router {
+  routeHook: RouteHook
   beforeEach?: (routeHook: RouteHook) => void
 }
 

@@ -1,6 +1,6 @@
 import { middlewarePipeline } from './helpers/middlewarePipeline'
 import { OptionsMissingPluginError } from './lib/Exceptions/OptionsMissingPluginError'
-import { Install } from './types/PluginTypes'
+import { Install, PluginOptions } from './types/PluginTypes'
 import {
   Route,
   RouteContext,
@@ -10,7 +10,15 @@ import {
   Vue
 } from './types/VueTypes'
 
-export const install: Install = (vue: Vue, router?: Router) => {
+export const install: Install<Router | PluginOptions> = (
+  vue: Vue,
+  options?: Router | PluginOptions
+) => {
+  const router: Router =
+    options && (options as PluginOptions).router
+      ? (options as PluginOptions).router
+      : (options as Router)
+
   /* istanbul ignore else */
   if (router === undefined) {
     throw new OptionsMissingPluginError('router is a required option.')
