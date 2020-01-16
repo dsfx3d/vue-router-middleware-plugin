@@ -88,6 +88,10 @@ const routes = [
 
 If the user tries to access `/profile` route, the attached middlewares will be resolved in a synchronous order. i.e. `AuthExampleMiddleware` will be resolved first and `AnotherMiddleware` afterwards.
 
+## Roadmap
+
+* **v1.1.0** - Global Middlewares 
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
