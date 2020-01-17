@@ -1,5 +1,6 @@
 import { middlewarePipeline } from './helpers/middlewarePipeline'
 import { retuenMiddlewareArray } from './helpers/returnMiddlewareArray'
+import { BasePluginError } from './lib/Exceptions/BasePluginError'
 import { OptionsMissingPluginError } from './lib/Exceptions/OptionsMissingPluginError'
 import { Middleware } from './types/MiddlewareTypes'
 import { Install, PluginOptions } from './types/PluginTypes'
@@ -18,14 +19,28 @@ export const install: Install<Router | PluginOptions> = (
 ) => {
   let router: Router
   let middlewares: Middleware[] = []
+  let context: RouteContext = {}
 
   if (options && (options as PluginOptions).router) {
-    const { router: _router, middleware } = options as PluginOptions
+    const {
+      router: _router,
+      middleware,
+      context: _context
+    } = options as PluginOptions
     router = _router
 
     /* istanbul ignore if */
     if (middleware !== undefined) {
       middlewares = retuenMiddlewareArray(middleware)
+    }
+
+    if (_context !== undefined) {
+      /* istanbul ignore if */
+      if (typeof _context === 'object') {
+        context = { ..._context }
+      } else {
+        throw new BasePluginError('invalid context provided in plugin options')
+      }
     }
   } else {
     router = options as Router
@@ -61,7 +76,7 @@ export const install: Install<Router | PluginOptions> = (
         }
       }
       if (middlewares.length) {
-        const context: RouteContext = { to, from, next }
+        context = { ...context, to, from, next }
         const routeResolver = middlewarePipeline(
           context,
           middlewares

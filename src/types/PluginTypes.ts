@@ -6,4 +6,5 @@ export type Install<T> = (vue: Vue, router?: T) => void
 export interface PluginOptions {
   router: Router
   middleware?: Middleware[] | Middleware
+  context?: { [key: string]: any }
 }
