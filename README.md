@@ -1,10 +1,11 @@
 # vue-router-middleware-plugin
 
-[![Build Status](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin.svg?branch=master)](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin)
 [![npm version](https://badge.fury.io/js/vue-router-middleware-plugin.svg)](https://badge.fury.io/js/vue-router-middleware-plugin)
+[![Build Status](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin.svg?branch=master)](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin)
+[![code cove](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1ab723bcfaa460aa9d12ccc7a54bf65)](https://www.codacy.com/manual/dsfx3d/vue-router-middleware-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dsfx3d/vue-router-middleware-plugin&amp;utm_campaign=Badge_Grade)
-![vue-router-middleware-plugin](https://badgen.net/bundlephobia/min/vue-router-middleware-plugin)
 ![vue-router-middleware-plugin](https://badgen.net/bundlephobia/minzip/vue-router-middleware-plugin)
+![vue-router-middleware-plugin](https://badgen.net/bundlephobia/min/vue-router-middleware-plugin)
 
 > **Please Note:** Due to the very limited scope of this module, I do not anticipate need to making many changes to it.  Expect long stretches of zero updates—that does not mean that the module is outdated.
 
