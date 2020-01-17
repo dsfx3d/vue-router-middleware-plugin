@@ -5,7 +5,7 @@ cache:
     - node_modules
 branches:
   only:
-    - master # trigger release only for PRs and changes pushed to master branch
+    - master
 notifications:
   email: false
 node_js:
@@ -17,4 +17,5 @@ before_script:
 script:
   - npm run build
 after_success:
+  - bash <(curl -s https://codecov.io/bash)
   - npm run semantic-release

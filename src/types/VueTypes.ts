@@ -1,4 +1,4 @@
-import { Middleware } from './MiddlewareTypes'
+import { Middleware, MiddlewarePipeline } from './MiddlewareTypes'
 
 // vue plugin
 export interface Plugin {}
@@ -23,7 +23,7 @@ export interface RouteContext {
   next: RouteResolver
 }
 export interface RouteMeta {
-  middleware: Middleware[] | Middleware
+  middleware?: Middleware[] | Middleware | MiddlewarePipeline
 }
 export interface Route {
   meta: RouteMeta
