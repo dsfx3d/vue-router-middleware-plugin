@@ -1,11 +1,10 @@
 import { middlewarePipeline } from '../src/helpers/middlewarePipeline'
+import { InvalidPipelinePayload } from '../src/lib/Exceptions/InvalidPipelinePayloads'
 import { Middleware } from '../src/types/MiddlewareTypes'
 import { RouteContext, RouteResolver } from '../src/types/VueTypes'
+import { expectErrorClass } from '../src/utils/testUtils'
 
-const executePipeline = (
-  resolver: RouteResolver,
-  middlwware: Middleware | Middleware[]
-) => {
+const executePipeline = (resolver: RouteResolver, middlwware: Middleware[]) => {
   // tslint:disable-next-line: no-object-literal-type-assertion
   const context = {
     next: resolver
@@ -24,7 +23,11 @@ describe('Middleware Pipeline: Single Middleware', () => {
     const routeResolver: RouteResolver = () => {
       expect(middlewareExecuted).toBeTruthy()
     }
-    executePipeline(routeResolver, middleware)
+    expectErrorClass(
+      () =>
+        executePipeline(routeResolver, (middleware as unknown) as Middleware[]),
+      InvalidPipelinePayload
+    )
   })
 })
 

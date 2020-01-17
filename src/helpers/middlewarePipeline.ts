@@ -1,27 +1,24 @@
-import { Middleware, MiddlewarePipeline } from '../types/MiddlewareTypes'
+import { InvalidPipelinePayload } from '../lib/Exceptions/InvalidPipelinePayloads'
+import { Middleware } from '../types/MiddlewareTypes'
 import { RouteContext, RouteResolver } from '../types/VueTypes'
 
-export const middlewarePipeline: MiddlewarePipeline = (
+export const middlewarePipeline = (
   context: RouteContext,
-  middleware: Middleware[] | Middleware,
+  middlewares: Middleware[],
   index = 0
 ) => {
-  if (Array.isArray(middleware) && index === middleware.length) {
+  if (!Array.isArray(middlewares)) {
+    throw new InvalidPipelinePayload()
+  }
+
+  if (index === middlewares.length) {
     return context.next
   }
 
-  let nextContext: RouteContext
-  // tslint:disable-next-line: variable-name
-  let thisMiddleware: Middleware
+  const thisMiddleware = middlewares[index]
+  const nextMiddleware = middlewarePipeline(context, middlewares, index + 1)
+  const thisContext = { ...context, next: nextMiddleware as RouteResolver }
 
-  if (Array.isArray(middleware)) {
-    thisMiddleware = middleware[index]
-    const nextMiddleware = middlewarePipeline(context, middleware, index + 1)
-    nextContext = { ...context, next: nextMiddleware as RouteResolver }
-  } else {
-    thisMiddleware = middleware
-    nextContext = context
-  }
-  const nextResolver = () => thisMiddleware(nextContext)
+  const nextResolver = () => thisMiddleware(thisContext)
   return nextResolver
 }
