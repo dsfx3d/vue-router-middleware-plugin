@@ -1,6 +1,6 @@
 {
   "name": "vue-router-middleware-plugin",
-  "version": "1.0.2",
+  "version": "0.0.0-development",
   "description": "A vue.js plugin to implement a middleware pipeline between your routes.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -10,7 +10,7 @@
   "scripts": {
     "type-check": "tslint-config-prettier-check ./tslint.json",
     "type-check:watch": "tsc --noEmit --watch",
-    "prebuild": "npm run precommit",
+    "prebuild": "npm run lint",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir build --extensions \".ts,.tsx\" --source-maps inline",

@@ -156,14 +156,42 @@ const routes = [
     }
   }
 ]
+```
 
+### New features
+
+#### v1.2.0: Custom Middleware properties
+
+You can now pass custom properties in plugin option `context` which will be accessible to the middleware.
+
+```javascript
+import Vue from 'vue'
+import MiddlewarePlugin from 'vue-router-middleware-plugin'
+import router from '~/router'
+import store from '~/store'
+
+Vue.use(MiddlewarePlugin, {
+  router,
+  // context must be an object
+  context: { store }
+})
+```
+
+In the middleware
+
+```javascript
+export default ({ next, store }) => {
+  store.commit('app/commit', true)
+  next()
+}
 ```
 
 ## Roadmap
 
-- [x] **v1.0.0** - Route Middlewares
-- [x] **v1.1.0** - Global Middlewares
-- [ ] **v1.2.0** - Auto importing middlewares.
+- [x] **v1.0.0** - Route Middlewares.
+- [x] **v1.1.0** - Global Middlewares.
+- [x] **v1.2.0** - Middleware context - custom properties.
+- [ ] **TBD** - Auto importing middlewares.
 
 ## Contributing
 

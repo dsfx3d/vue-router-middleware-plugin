@@ -18,9 +18,10 @@ export interface Router {
 // route types
 export type RouteResolver = (arg?: boolean | string | Route) => void
 export interface RouteContext {
-  to: Route
-  from: Route
-  next: RouteResolver
+  to?: Route
+  from?: Route
+  next?: RouteResolver
+  [key: string]: any
 }
 export interface RouteMeta {
   middleware?: Middleware[] | Middleware | MiddlewarePipeline

@@ -1,11 +1,9 @@
 //
 import { install } from '../src/install'
-// exceptions
+import { BasePluginError } from '../src/lib/Exceptions/BasePluginError'
 import { OptionsMissingPluginError } from '../src/lib/Exceptions/OptionsMissingPluginError'
 import { PluginOptions } from '../src/types/PluginTypes'
-// types
 import { Router, Vue } from '../src/types/VueTypes'
-// test utils
 import { expectErrorClass, VueRouter } from '../src/utils/testUtils'
 
 describe('installation checks', () => {
@@ -15,13 +13,23 @@ describe('installation checks', () => {
     expectErrorClass(() => install(dummyVue), OptionsMissingPluginError)
   })
 
-  const router: Router = new VueRouter()
   it('accepts router as plugin option', () => {
+    const router: Router = new VueRouter()
     install(dummyVue, router)
   })
 
-  const pluginOptions: PluginOptions = { router }
   it('accepts options object as plugin option', () => {
+    const router: Router = new VueRouter()
+    const pluginOptions: PluginOptions = { router }
     install(dummyVue, pluginOptions)
+  })
+
+  it('raises exception if invalid context provided in plugin options', () => {
+    const router: Router = new VueRouter()
+    const pluginOptions: PluginOptions = ({
+      context: 1,
+      router
+    } as unknown) as PluginOptions
+    expectErrorClass(() => install(dummyVue, pluginOptions), BasePluginError)
   })
 })
