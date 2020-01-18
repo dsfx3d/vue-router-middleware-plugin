@@ -15,8 +15,8 @@ before_install:
   - npm i -g npm@^6.10.0
 before_script:
   - npm prune
-script:
   - npm run test
+script:
   - npm run build
 after_success:
   - bash <(curl -s https://codecov.io/bash)
