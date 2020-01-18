@@ -5,7 +5,8 @@
 [![code cove](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1ab723bcfaa460aa9d12ccc7a54bf65)](https://www.codacy.com/manual/dsfx3d/vue-router-middleware-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dsfx3d/vue-router-middleware-plugin&amp;utm_campaign=Badge_Grade)
 ![vue-router-middleware-plugin](https://badgen.net/bundlephobia/minzip/vue-router-middleware-plugin)
-![vue-router-middleware-plugin](https://badgen.net/bundlephobia/min/vue-router-middleware-plugin)
+
+> **Important:** Global middlewares are not working as expected. Please ignore using global middlewares. The fix will be published in next release. If you are interested in global middlewares please watch the respository on github to be notified about the fix.
 
 > **Please Note:** Due to the very limited scope of this module, I do not anticipate need to making many changes to it.  Expect long stretches of zero updates—that does not mean that the module is outdated.
 
