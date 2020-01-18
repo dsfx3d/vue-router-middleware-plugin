@@ -1,18 +1,19 @@
 # vue-router-middleware-plugin
 
+A vue.js plugin to implement a middleware pipeline for vue-router.
+
 [![npm version](https://badge.fury.io/js/vue-router-middleware-plugin.svg)](https://badge.fury.io/js/vue-router-middleware-plugin)
 [![Build Status](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin.svg?branch=master)](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin)
 [![code cove](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1ab723bcfaa460aa9d12ccc7a54bf65)](https://www.codacy.com/manual/dsfx3d/vue-router-middleware-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dsfx3d/vue-router-middleware-plugin&amp;utm_campaign=Badge_Grade)
 ![vue-router-middleware-plugin](https://badgen.net/bundlephobia/minzip/vue-router-middleware-plugin)
-![vue-router-middleware-plugin](https://badgen.net/bundlephobia/min/vue-router-middleware-plugin)
 
-> **Please Note:** Due to the very limited scope of this module, I do not anticipate need to making many changes to it.  Expect long stretches of zero updates—that does not mean that the module is outdated.
-
-A vue.js plugin to implement a middleware pipeline for vue-router.
+> **Important:** Global middlewares are not working as expected. Please ignore using global middlewares. The fix will be published in next release. If you are interested in global middlewares please watch the respository on github to be notified about the fix.
 
 It can have many use cases like protecting a route or to request an API to populate the store before a route is loaded.
 The plugin utilizes [vue-router navigation guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) to implement easy to use, readable and more organized middlewares for your routes.
+
+> **Please Note:** Due to the very limited scope of this module, I do not anticipate need to making many changes to it.  Expect long stretches of zero updates—that does not mean that the module is outdated.
 
 ## Installation
 
