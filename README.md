@@ -36,14 +36,18 @@ Create a middleware, `auth.js`
 ```javascript
 import store from '~/store'
 
-export default ({ to, from, next }) => {
-  if (store.getters.isLoggedIn) {
-    next()
-  } else {
-    next('/login')
+export default ({ to, from, redirect }) => {
+  if (!store.getters.isLoggedIn) {
+    redirect('/login')
+    // or
+    redirect(from)
+    // or
+    redirect(false)
   }
 }
 ```
+
+> **Note:** Properties `to` and `from` are the same as in a vue router navigation gaurds. In __v2.0.0__  functin `next` has been replaced by `redirect` which can be called to redirect to a route. Now, there's no need to call `next` in each middleware to resolve it.
 
 Register the plugin in your application.
 
@@ -56,13 +60,14 @@ import LoggerMiddleware from '~router/middlewares/logger'
 
 Vue.use(MiddlewarePlugin, router)
 
-// OR register a globabl middleware
-
+// register a globabl middleware
 Vue.use(MiddlewarePlugin, { router, middleware: AuthMiddleware })
 
-// OR register multiple globabl middlewares
-
-Vue.use(MiddlewarePlugin, { router, middleware: [AuthMiddleware, LoggerMiddleware] })
+// register multiple globabl middlewares
+Vue.use(MiddlewarePlugin, {
+  router,
+  middleware: [AuthMiddleware, LoggerMiddleware]
+})
 ```
 
 > **Note:**: As the name suggests a global middleware will be resolved before each route.
@@ -174,25 +179,33 @@ import store from '~/store'
 Vue.use(MiddlewarePlugin, {
   router,
   // context must be an object
-  context: { store }
+  context: {
+    version: process.env.VERSION
+  }
 })
 ```
 
-In the middleware
+In any middleware, `version` will be added to context
 
 ```javascript
-export default ({ next, store }) => {
-  store.commit('app/commit', true)
-  next()
+export default ({ version }) => {
+  console.log('version:', version)
 }
 ```
 
+#### v2.0.0: New property in middleware context
+
+* Middlewares don't need to be resolved by calling `next`.
+* A new function `redirect`, added to the middleware context.
+* **Breaking Change:** Function `next` removed from middleware context.
+
 ## Roadmap
 
-- [x] **v1.0.0** - Route Middlewares.
-- [x] **v1.1.0** - Global Middlewares.
-- [x] **v1.2.0** - Middleware context - custom properties.
-- [ ] **TBD** - Auto importing middlewares.
+* [x] **v1.0.0** - Route Middlewares.
+* [x] **v1.1.0** - Global Middlewares.
+* [x] **v1.2.0** - Middleware context - custom properties.
+* [x] **v2.0.0** - Middleware Pipeline (rebuild).
+* [ ] **TBD** - Auto importing middlewares.
 
 ## Contributing
 

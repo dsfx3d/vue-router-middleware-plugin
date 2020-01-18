@@ -4,13 +4,12 @@ import { Middleware } from '../src/types/MiddlewareTypes'
 import { RouteContext, RouteResolver } from '../src/types/VueTypes'
 import { expectErrorClass } from '../src/utils/testUtils'
 
-const executePipeline = (resolver: RouteResolver, middlwware: Middleware[]) => {
+const executePipeline = (resolver: RouteResolver, middleware: Middleware[]) => {
   // tslint:disable-next-line: no-object-literal-type-assertion
   const context = {
     next: resolver
   } as RouteContext
-  const func = middlewarePipeline(context, middlwware) as RouteResolver
-  func()
+  middlewarePipeline(context, middleware)
 }
 
 describe('Middleware Pipeline: Single Middleware', () => {

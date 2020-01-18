@@ -18,7 +18,7 @@ export const install: Install<Router | PluginOptions> = (
   options?: Router | PluginOptions
 ) => {
   let router: Router
-  let middlewares: Middleware[] = []
+  let globalMiddlewares: Middleware[] = []
   let context: RouteContext = {}
 
   if (options && (options as PluginOptions).router) {
@@ -31,7 +31,7 @@ export const install: Install<Router | PluginOptions> = (
 
     /* istanbul ignore if */
     if (middleware !== undefined) {
-      middlewares = retuenMiddlewareArray(middleware)
+      globalMiddlewares = retuenMiddlewareArray(middleware)
     }
 
     if (_context !== undefined) {
@@ -55,6 +55,7 @@ export const install: Install<Router | PluginOptions> = (
       from: Route,
       next: RouteResolver
     ) => {
+      let middlewares = [...globalMiddlewares]
       if ('middleware' in to.meta) {
         if (typeof to.meta.middleware === 'object') {
           let ignores: Middleware[] = []
@@ -77,11 +78,7 @@ export const install: Install<Router | PluginOptions> = (
       }
       if (middlewares.length) {
         context = { ...context, to, from, next }
-        const routeResolver = middlewarePipeline(
-          context,
-          middlewares
-        ) as RouteResolver
-        routeResolver()
+        middlewarePipeline(context, middlewares)
       } else {
         next()
       }

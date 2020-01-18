@@ -13,7 +13,10 @@ export const retuenMiddlewareArray = (
     }
   }
 
-  if (Array.isArray(x) && x.length) {
+  if (Array.isArray(x)) {
+    if (x.length < 1) {
+      return [...arr]
+    }
     const allMiddlewares = x.every(_x => typeof _x === 'function')
     if (allMiddlewares) {
       return [...arr, ...x]
