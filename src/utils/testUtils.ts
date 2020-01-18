@@ -1,9 +1,11 @@
+// tslint:disable-next-line: no-submodule-imports no-implicit-dependencies
+import 'regenerator-runtime/runtime'
 import { UnknownError } from '../lib/Exceptions/UnknownError'
 import { RouteHook, Router } from '../types/VueTypes'
 
-export const expectErrorClass = (fn: () => void, ErrorClass: unknown) => {
+export const expectErrorClass = async (fn: () => void, ErrorClass: unknown) => {
   try {
-    fn()
+    await fn()
     throw new UnknownError()
   } catch (e) {
     expect(e).toBeInstanceOf(ErrorClass)

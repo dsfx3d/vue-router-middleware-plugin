@@ -1,24 +1,36 @@
+// tslint:disable-next-line: no-submodule-imports no-implicit-dependencies
+import 'regenerator-runtime/runtime'
 import { InvalidPipelinePayload } from '../lib/Exceptions/InvalidPipelinePayloads'
 import { Middleware } from '../types/MiddlewareTypes'
-import { RouteContext, RouteResolver } from '../types/VueTypes'
+import { Route, RouteContext } from '../types/VueTypes'
 
-export const middlewarePipeline = (
+export const middlewarePipeline = async (
   context: RouteContext,
-  middlewares: Middleware[],
-  index = 0
+  middlewares: Middleware[]
 ) => {
   if (!Array.isArray(middlewares)) {
     throw new InvalidPipelinePayload()
   }
 
-  if (index === middlewares.length) {
-    return context.next
+  let redirected: boolean = false
+
+  const redirect = (arg: boolean | string | Route) => {
+    if (arg === undefined) {
+      return
+    }
+    context.next(arg)
+    redirected = true
   }
 
-  const thisMiddleware = middlewares[index]
-  const nextMiddleware = middlewarePipeline(context, middlewares, index + 1)
-  const thisContext = { ...context, next: nextMiddleware as RouteResolver }
+  for (const middleware of middlewares) {
+    const { next: _, ...middlewareContext } = context
+    await middleware({ ...middlewareContext, redirect })
+    if (redirected) {
+      break
+    }
+  }
 
-  const nextResolver = () => thisMiddleware(thisContext)
-  return nextResolver
+  if (!redirected) {
+    context.next()
+  }
 }
