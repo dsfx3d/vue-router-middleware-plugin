@@ -1,5 +1,7 @@
 # vue-router-middleware-plugin
 
+A vue.js plugin to implement a middleware pipeline for vue-router.
+
 [![npm version](https://badge.fury.io/js/vue-router-middleware-plugin.svg)](https://badge.fury.io/js/vue-router-middleware-plugin)
 [![Build Status](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin.svg?branch=master)](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin)
 [![code cove](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/dsfx3d/vue-router-middleware-plugin/branch/master/graph/badge.svg)
@@ -8,12 +10,10 @@
 
 > **Important:** Global middlewares are not working as expected. Please ignore using global middlewares. The fix will be published in next release. If you are interested in global middlewares please watch the respository on github to be notified about the fix.
 
-> **Please Note:** Due to the very limited scope of this module, I do not anticipate need to making many changes to it.  Expect long stretches of zero updates—that does not mean that the module is outdated.
-
-A vue.js plugin to implement a middleware pipeline for vue-router.
-
 It can have many use cases like protecting a route or to request an API to populate the store before a route is loaded.
 The plugin utilizes [vue-router navigation guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) to implement easy to use, readable and more organized middlewares for your routes.
+
+> **Please Note:** Due to the very limited scope of this module, I do not anticipate need to making many changes to it.  Expect long stretches of zero updates—that does not mean that the module is outdated.
 
 ## Installation
 
