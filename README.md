@@ -203,7 +203,7 @@ export default ({ version }) => {
 * [x] **v1.1.0** - Global Middlewares.
 * [x] **v1.2.0** - Middleware context - custom properties.
 * [x] **v2.0.0** - Middleware Pipeline (rebuild).
-* [ ] **TBD** - Auto importing middlewares.
+* [ ] **v3.1.0** - Update context properties dynamically
 
 ## Contributing
 
