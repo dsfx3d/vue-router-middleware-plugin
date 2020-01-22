@@ -1,6 +1,6 @@
 import { NotAMiddleware } from '../lib/Exceptions/NotAMiddleware'
 
-export const retuenMiddlewareArray = (
+export const prepareMiddlewarePipelinePayload = (
   x: any | any[],
   arr: any[] = []
 ): any[] => {

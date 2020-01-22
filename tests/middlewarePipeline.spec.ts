@@ -1,4 +1,4 @@
-import { middlewarePipeline } from '../src/helpers/middlewarePipeline'
+import { middlewarePipeline } from '../src/core/middlewarePipeline'
 import { InvalidPipelinePayload } from '../src/lib/Exceptions/InvalidPipelinePayloads'
 import { Middleware } from '../src/types/MiddlewareTypes'
 import { RouteContext, RouteResolver } from '../src/types/VueTypes'

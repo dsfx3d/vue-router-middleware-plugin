@@ -1,5 +1,5 @@
-import { middlewarePipeline } from './helpers/middlewarePipeline'
-import { retuenMiddlewareArray } from './helpers/returnMiddlewareArray'
+import { middlewarePipeline } from './core/middlewarePipeline'
+import { prepareMiddlewarePipelinePayload as preparePipelinePayload } from './helpers/prepareMiddlewareiPiplinePayload'
 import { BasePluginError } from './lib/Exceptions/BasePluginError'
 import { OptionsMissingPluginError } from './lib/Exceptions/OptionsMissingPluginError'
 import { Middleware } from './types/MiddlewareTypes'
@@ -31,7 +31,7 @@ export const install: Install<Router | PluginOptions> = (
 
     /* istanbul ignore if */
     if (middleware !== undefined) {
-      globalMiddlewares = retuenMiddlewareArray(middleware)
+      globalMiddlewares = preparePipelinePayload(middleware)
     }
 
     if (_context !== undefined) {
@@ -60,20 +60,20 @@ export const install: Install<Router | PluginOptions> = (
         if (typeof to.meta.middleware === 'object') {
           let ignores: Middleware[] = []
           if ('attach' in to.meta.middleware) {
-            middlewares = retuenMiddlewareArray(
+            middlewares = preparePipelinePayload(
               to.meta.middleware.attach,
               middlewares
             )
           }
           if ('ignore' in to.meta.middleware) {
-            ignores = retuenMiddlewareArray(to.meta.middleware.ignore)
+            ignores = preparePipelinePayload(to.meta.middleware.ignore)
           }
 
           middlewares = middlewares.filter(
             middleware => !ignores.includes(middleware)
           )
         } else {
-          middlewares = retuenMiddlewareArray(to.meta.middleware, middlewares)
+          middlewares = preparePipelinePayload(to.meta.middleware, middlewares)
         }
       }
       if (middlewares.length) {

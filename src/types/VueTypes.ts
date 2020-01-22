@@ -6,6 +6,7 @@ export interface Plugin {}
 // vue
 export interface Vue {
   use?: (plugin: Plugin, router?: Router) => void
+  [key: string]: any
 }
 
 // router types
