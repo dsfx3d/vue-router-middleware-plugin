@@ -1,24 +1,24 @@
-import { retuenMiddlewareArray } from '../src/helpers/returnMiddlewareArray'
+import { prepareMiddlewarePipelinePayload as preparePipelinePayload } from '../src/helpers/prepareMiddlewareiPiplinePayload'
 import { NotAMiddleware } from '../src/lib/Exceptions/NotAMiddleware'
 import { expectErrorClass } from '../src/utils/testUtils'
 
 describe('returnMiddlewareArray', () => {
   it('throws error if first argument is not a function or array of functions', () => {
-    expectErrorClass(() => retuenMiddlewareArray(1), NotAMiddleware)
-    expectErrorClass(() => retuenMiddlewareArray([1]), NotAMiddleware)
+    expectErrorClass(() => preparePipelinePayload(1), NotAMiddleware)
+    expectErrorClass(() => preparePipelinePayload([1]), NotAMiddleware)
   })
 
   it('throw error if second argument is explicitly passed as not an array of middlewares', () => {
     expectErrorClass(
-      () => retuenMiddlewareArray([], (1 as unknown) as []),
+      () => preparePipelinePayload([], (1 as unknown) as []),
       NotAMiddleware
     )
-    expectErrorClass(() => retuenMiddlewareArray([], [1]), NotAMiddleware)
+    expectErrorClass(() => preparePipelinePayload([], [1]), NotAMiddleware)
   })
 
   it('returns an array of middleware if a middleware is passed as first argument', () => {
     const middleware = () => ({})
-    const middlewares = retuenMiddlewareArray(middleware)
+    const middlewares = preparePipelinePayload(middleware)
     expect(Array.isArray(middlewares)).toBeTruthy()
     expect(middlewares.length).toBe(1)
     expect(middlewares[0] === middleware).toBeTruthy()
@@ -29,7 +29,7 @@ describe('returnMiddlewareArray', () => {
     const middleware2 = () => 2
     const originMiddlewares = [middleware]
 
-    const middlewares = retuenMiddlewareArray(middleware2, originMiddlewares)
+    const middlewares = preparePipelinePayload(middleware2, originMiddlewares)
     expect(Array.isArray(middlewares)).toBeTruthy()
     expect(middlewares.length).toBe(2)
     expect(middlewares[0] === middleware).toBeTruthy()
@@ -41,7 +41,7 @@ describe('returnMiddlewareArray', () => {
     const middleware2 = () => 2
     const originMiddlewares = [middleware, middleware2]
 
-    const middlewares = retuenMiddlewareArray(originMiddlewares)
+    const middlewares = preparePipelinePayload(originMiddlewares)
     expect(Array.isArray(middlewares)).toBeTruthy()
     expect(middlewares.length).toBe(2)
     expect(middlewares[0] === middleware).toBeTruthy()
@@ -55,7 +55,7 @@ describe('returnMiddlewareArray', () => {
     const originMiddlewares = [middleware, middleware2]
     const originMiddlewares2 = [middleware2, middleware3]
 
-    const middlewares = retuenMiddlewareArray(
+    const middlewares = preparePipelinePayload(
       originMiddlewares,
       originMiddlewares2
     )

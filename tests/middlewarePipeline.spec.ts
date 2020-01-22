@@ -4,12 +4,15 @@ import { Middleware } from '../src/types/MiddlewareTypes'
 import { RouteContext, RouteResolver } from '../src/types/VueTypes'
 import { expectErrorClass } from '../src/utils/testUtils'
 
-const executePipeline = (resolver: RouteResolver, middleware: Middleware[]) => {
+const executePipeline = async (
+  resolver: RouteResolver,
+  middleware: Middleware[]
+) => {
   // tslint:disable-next-line: no-object-literal-type-assertion
   const context = {
     next: resolver
   } as RouteContext
-  middlewarePipeline(context, middleware)
+  await middlewarePipeline(context, middleware)
 }
 
 describe('Middleware Pipeline: Single Middleware', () => {
@@ -22,25 +25,25 @@ describe('Middleware Pipeline: Single Middleware', () => {
     const routeResolver: RouteResolver = () => {
       expect(middlewareExecuted).toBeTruthy()
     }
-    expectErrorClass(
-      () =>
-        executePipeline(routeResolver, (middleware as unknown) as Middleware[]),
-      InvalidPipelinePayload
-    )
+    expectErrorClass(async () => {
+      await executePipeline(
+        routeResolver,
+        (middleware as unknown) as Middleware[]
+      )
+    }, InvalidPipelinePayload)
   })
 })
 
 describe('Middleware Pipeline: Multiple Middlewares', () => {
-  it('executes all middlewares', () => {
+  it('executes all middlewares', async () => {
     let counter = 0
     const middleware = (context: RouteContext) => {
       counter++
-      context.next()
     }
     const middlewares: Middleware[] = [middleware, middleware, middleware]
     const routeResolver: RouteResolver = () => {
       expect(counter).toEqual(middlewares.length)
     }
-    executePipeline(routeResolver, middlewares)
+    await executePipeline(routeResolver, middlewares)
   })
 })

@@ -1,4 +1,3 @@
-// tslint:disable-next-line: no-submodule-imports no-implicit-dependencies
 import 'regenerator-runtime/runtime'
 import { UnknownError } from '../lib/Exceptions/UnknownError'
 import { RouteHook, Router } from '../types/VueTypes'
