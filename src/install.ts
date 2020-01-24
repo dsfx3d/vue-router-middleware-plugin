@@ -67,7 +67,8 @@ export const install: Install<Router | PluginOptions> = (
     return context
   }
   vue.$addMiddlewareContext = (key: string, value: any) => {
-    context = { [key]: value, ...context }
+    const { to, from, redirect, app } = context
+    context = { [key]: value, to, from, redirect, app }
   }
   vue.$updateMiddlewareContext = (key: string, value: any) => {
     if (key === 'app') {
