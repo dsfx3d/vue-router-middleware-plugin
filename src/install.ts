@@ -66,17 +66,9 @@ export const install: Install<Router | PluginOptions> = (
     context = { ..._context, app }
     return context
   }
-  vue.$addMiddlewareContext = (key: string, value: any) => {
+  vue.$updateMiddlewareContext = (key: string, value: any) => {
     const { to, from, redirect, app } = context
     context = { [key]: value, to, from, redirect, app }
-  }
-  vue.$updateMiddlewareContext = (key: string, value: any) => {
-    if (key === 'app') {
-      throw new BasePluginError(
-        'cannot update internal context property, `key`'
-      )
-    }
-    context[key] = value
   }
 
   /* istanbul ignore next */
