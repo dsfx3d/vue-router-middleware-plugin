@@ -13,7 +13,10 @@ module.exports = {
           title: 'Guide',
           collapsable: false,
           children: [
-            ''
+            '',
+            'installation',
+            'usage',
+            'context'
           ]
         }
       ],
@@ -24,7 +27,7 @@ module.exports = {
           children: [
             '',
             'context',
-            'options'
+            'helpers'
           ]
         }
       ]

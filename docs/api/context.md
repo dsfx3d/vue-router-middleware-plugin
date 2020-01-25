@@ -1,7 +1,5 @@
 # Context
 
-The `context` or middleware context is the only argument in all middleware functions. It's an object which provide properties which can be used to control the behaviour of a middleware
-
 ```javascript
 export default ({ app, to, from, redirect }) => {
   if (to.path === '/protected') {
@@ -19,7 +17,7 @@ The context has the following built-in properties:
 
 ### `app: VueConstructor`
 
-A regular vue constructor with injected plugin [options](options/).
+A middleware app object with injected [helpers](helpers/).
 
 ### `to: Route`
 
@@ -39,4 +37,4 @@ A function to redirect to any route. Accepts same arguments as the `next` functi
 
 ## Adding custom properties
 
-From the example above, we are appearently adding a property `visits` to the middleware context. Goto [options](options/) for more.
+In the above example, we appearently add a property `visits` to the middleware context. Goto [Helper Functions](helpers.html#functions) for more.
