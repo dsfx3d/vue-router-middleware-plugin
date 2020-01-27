@@ -12,4 +12,6 @@ export default context => {
 }
 ```
 
+## Custom Context
+
 It always contain a few built-in properties but can also be extended to include [custom properties](/api/context.html#adding-custom-properties) as per use case.

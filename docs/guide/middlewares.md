@@ -1,26 +1,6 @@
-# Usage
+# Middlewares
 
-## Concept
-
-## Types of middlewares
-
-### Global Middlewares
-
-```javascript
-Vue.use(MiddlewarePlugin, {
-  router,
-  middleware: AuthMiddleware
-})
-
-// or
-
-Vue.use(MiddlewarePlugin, {
-  router,
-  middleware: [AuthMiddleware, AnalyticsMiddleware]
-})
-```
-
-### Route Middlewares
+## Route Middleware
 
 ```javascript
 const routes = [
@@ -66,14 +46,18 @@ const routes = [
 ]
 ```
 
-## Use Cases
-
-### Route Protection
+## Global Middleware
 
 ```javascript
-```
+Vue.use(MiddlewarePlugin, {
+  router,
+  middleware: AuthMiddleware
+})
 
-### Long Running Tasks
+// or
 
-```javascript
+Vue.use(MiddlewarePlugin, {
+  router,
+  middleware: [AuthMiddleware, AnalyticsMiddleware]
+})
 ```
