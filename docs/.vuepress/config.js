@@ -10,13 +10,20 @@ module.exports = {
     sidebar: {
       '/guide/': [
         {
-          title: 'Guide',
+          title: 'Getting Started',
           collapsable: false,
           children: [
-            '',
             'installation',
-            'usage',
-            'context'
+            ''
+          ]
+        },
+        {
+          title: 'Advanced',
+          collapsable: false,
+          children: [
+            'configurations',
+            'context',
+            'middlewares'
           ]
         }
       ],
