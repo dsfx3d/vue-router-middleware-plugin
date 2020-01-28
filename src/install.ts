@@ -65,13 +65,13 @@ export const install: Install<Router | PluginOptions> = (
     return _context
   }
   vue.$setMiddlewareContext = (_context: any): any => {
-    const { app } = context
-    context = { ..._context, app }
+    const { app, to, from, redirect } = context
+    context = { ..._context, app, to, from, redirect }
     return context
   }
   vue.$updateMiddlewareContext = (key: string, value: any) => {
-    const { app } = context
-    context = { [key]: value, app }
+    const { app, to, from, redirect } = context
+    context = { [key]: value, app, to, from, redirect }
   }
 
   /* istanbul ignore next */
