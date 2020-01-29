@@ -36,10 +36,24 @@ export default async ({ store }) => {
 }
 ```
 
-In this case, you could've just imported the store in the middleware instead of
-adding it as a custom context property but it will depend on the use case and
-personal preferences of a developer. One such use case will be, if you want to carry
-state in the middleware context.
+In this case, you could've imported the store in the middleware module instead of
+adding it as a custom context property.
+
+```javascript
+import store from '@/path-to-store'
+
+export default async () => {
+  await store.dispatch('app/getData')
+}
+```
+
+If you are thinking what's the point of adding custom context. It will depend on
+the use case and personal preferences of a developer. One such case might be,
+if you are lazy and don't want to import the same module in multiple middlewares.
+
+The idea behind adding custom context was so that other plugins can leverage it
+to inject functionalities which can used inside a middleware, but there's more than
+that. With the context, you can carry state in the middleware pipeline.
 
 ### Dynamic Custom Context
 
