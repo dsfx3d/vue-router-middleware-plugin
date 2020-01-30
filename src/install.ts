@@ -11,7 +11,6 @@ import {
   RouteResolver,
   Vue
 } from './types/VueTypes'
-import { BasePluginError } from './lib/Exceptions/BasePluginError'
 
 export const install: Install<Router | PluginOptions> = (
   vue: Vue,
@@ -21,9 +20,10 @@ export const install: Install<Router | PluginOptions> = (
     throw new InvalidOptions()
   }
 
+  const app: any = {}
   let router: Router
   let globalMiddlewares: Middleware[] = []
-  let context: RouteContext = { app: vue }
+  let context: RouteContext = { app }
 
   if (options && (options as PluginOptions).router) {
     // if options object
@@ -56,23 +56,6 @@ export const install: Install<Router | PluginOptions> = (
   } else {
     // if options is router
     router = options as Router
-  }
-
-  // ==== helpers ============
-  vue.$MiddlewarePlugin = true
-  vue.$getMiddlewareContext = () => context
-  vue.$setMiddlewareContext = (_context: any): any => {
-    const { app } = context
-    context = { ..._context, app }
-    return context
-  }
-  vue.$updateMiddlewareContext = (key: string, value: any) => {
-    if (key === 'app') {
-      throw new BasePluginError(
-        'cannot update internal context property, `key`'
-      )
-    }
-    context[key] = value
   }
 
   /* istanbul ignore next */
@@ -109,7 +92,23 @@ export const install: Install<Router | PluginOptions> = (
     } else {
       next()
     }
+  }
 
-    router.beforeEach(routeHook)
+  router.beforeEach(routeHook)
+
+  // ==== helpers ============
+  app.$MiddlewarePlugin = true
+  app.$getMiddlewareContext = () => {
+    const { app, ..._context } = context
+    return _context
+  }
+  app.$setMiddlewareContext = (_context: any): any => {
+    const { app, to, from, redirect } = context
+    context = { ..._context, app, to, from, redirect }
+    return context
+  }
+  app.$updateMiddlewareContext = (key: string, value: any) => {
+    const { app, to, from, redirect } = context
+    context = { [key]: value, app, to, from, redirect }
   }
 }
