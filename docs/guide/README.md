@@ -1,57 +1,20 @@
-# Quickstart
+# Introduction
 
-## Get Started in 3 Easy Steps
+A middleware is a block of code that will run when navigating
+from one route to another.
 
-1. Register middleware plugin in your app.
+The Vue Router offers [navigation guard API](https://router.vuejs.org/guide/advanced/navigation-guards.html)
+which can be used to add control logic between your routes but they can easily make
+your route objects messy and difficult to read and there's no elegant way of reusing
+same logic in multiple routes.
 
-    ```javascript
-    import Vue from 'vue'
-    import MiddlewarePlugin from 'vue-router-middleware-plugin'
-    import router from '@/path-to-router'
+The plugin utilizes navigation guards to implement easy to use, readable and more
+organized middlewares for your routes.
 
-    Vue.use(MiddlewarePlugin, router)
-    ```
+### Installation
 
-2. Create a middleware function.
-
-    ```javascript
-    import store from '@/path-to-store'
-
-    export default ({ to, from, redirect }) => {
-      if (!store.getters.isLoggedIn) {
-        redirect('/login')
-      }
-    }
-    ```
-
-3. Attach middleware to a route.
-
-```javascript
-import AuthMiddleware from '@/path-to-auth-middleware'
-
-export default new VueRouter({
-  routes: [
-    {
-      path: '/',
-      meta: {
-        middleware: AuthMiddleware
-      },
-      .
-      .
-    },
+```bash
+npm i -S vue-router-middleware-plugin
 ```
 
-Note: You may attach multiple middlewares to a route.
-
-```javascript
-  {
-    path: '/login',
-    meta: {
-      middleware: [LoggerMiddleware, AnalyticsMiddleware]
-    },
-    .
-    .
-  },
-```
-
-Easy as that to get started. For advanced features continue to [configurations](configurations).
+Get started with the quickstart guide.
