@@ -23,7 +23,7 @@ export const install: Install<Router | PluginOptions> = (
   const app: any = {}
   let router: Router
   let globalMiddlewares: Middleware[] = []
-  let context: RouteContext = { app }
+  let context: RouteContext = { app: vue }
 
   if (options && (options as PluginOptions).router) {
     // if options object
@@ -97,17 +97,17 @@ export const install: Install<Router | PluginOptions> = (
   router.beforeEach(routeHook)
 
   // ==== helpers ============
-  app.$MiddlewarePlugin = true
-  app.$getMiddlewareContext = () => {
+  vue.$MiddlewarePlugin = true
+  vue.$getMiddlewareContext = () => {
     const { app, ..._context } = context
     return _context
   }
-  app.$setMiddlewareContext = (_context: any): any => {
+  vue.$setMiddlewareContext = (_context: any): any => {
     const { app, to, from, redirect } = context
     context = { ..._context, app, to, from, redirect }
     return context
   }
-  app.$updateMiddlewareContext = (key: string, value: any) => {
+  vue.$updateMiddlewareContext = (key: string, value: any) => {
     const { app, to, from, redirect } = context
     context = { [key]: value, app, to, from, redirect }
   }
