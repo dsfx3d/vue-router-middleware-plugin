@@ -1,6 +1,6 @@
 {
   "name": "vue-router-middleware-plugin",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "A vue.js plugin to implement a middleware pipeline between your routes.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
