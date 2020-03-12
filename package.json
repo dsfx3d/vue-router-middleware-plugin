@@ -38,7 +38,7 @@
     "ghooks": "2.0.4",
     "jest": "24.9.0",
     "prettier": "1.19.1",
-    "regenerator-runtime": "0.13.3",
+    "regenerator-runtime": "0.13.5",
     "semantic-release": "16.0.4",
     "ts-jest": "24.3.0",
     "tslint": "5.20.1",
