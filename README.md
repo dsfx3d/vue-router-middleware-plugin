@@ -1,6 +1,6 @@
 # Vue Router Middleware Plugin
 
-A vue-router middleware pipeline.
+A vue-router middleware pipeline (Nuxt like middlewares in Vue).
 
 [![npm version](https://badge.fury.io/js/vue-router-middleware-plugin.svg)](https://badge.fury.io/js/vue-router-middleware-plugin)
 [![Build Status](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin.svg?branch=master)](https://travis-ci.org/dsfx3d/vue-router-middleware-plugin)
