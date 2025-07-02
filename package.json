@@ -24,13 +24,13 @@
     "commit": "git-cz"
   },
   "devDependencies": {
-    "@babel/cli": "7.27.2",
-    "@babel/core": "7.27.3",
+    "@babel/cli": "7.28.0",
+    "@babel/core": "7.28.0",
     "@babel/plugin-proposal-class-properties": "7.18.6",
     "@babel/plugin-proposal-numeric-separator": "7.18.6",
     "@types/node": "13.13.52",
     "@babel/plugin-proposal-object-rest-spread": "7.20.7",
-    "@babel/preset-env": "7.27.2",
+    "@babel/preset-env": "7.28.0",
     "@babel/preset-typescript": "7.27.1",
     "@types/jest": "25.2.3",
     "cz-conventional-changelog": "3.3.0",
